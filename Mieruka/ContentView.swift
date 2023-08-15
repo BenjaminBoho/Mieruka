@@ -9,46 +9,26 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = TodoListViewModel()
+    @ObservedObject var viewModel = TodoListManger()
     @State private var newTask = ""
-
+    
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(viewModel.todoItems) { item in
-                        HStack {
-                            Button(action: {
-                                viewModel.toggleTaskCompleted(item)
-                            }) {
-                                Image(systemName: item.completed ? "checkmark.circle.fill" : "circle")
-                            }
-                            Text(item.task)
-                                .strikethrough(item.completed, color: .black)
-                                .foregroundColor(item.completed ? .gray : .primary)
-                        }
-                    }
-                    .onDelete(perform: deleteTask)
-                }
-                
-                HStack {
-                    TextField("Add a task...", text: $newTask)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Button(action: {
-                        viewModel.addTask(newTask)
-                        newTask = ""
-                    }) {
-                        Text("Add")
-                    }
-                }
+            contentView
                 .padding()
-            }
-            .padding()
-            .navigationTitle("Todo List")
+                .navigationTitle("Todo List")
         }
     }
     
-    private func deleteTask(at offsets: IndexSet) {
-        viewModel.todoItems.remove(atOffsets: offsets)
+    private var contentView: some View {
+        VStack {
+            List {
+                ForEach(viewModel.todoItems) { task in
+                    TaskController.taskRow(viewModel: viewModel, task: task)
+                }
+                .onDelete(perform: viewModel.removeTasks)
+            }
+            TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel)
+        }
     }
 }
