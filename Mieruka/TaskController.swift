@@ -39,4 +39,9 @@ struct TaskController {
             }
         }
     }
+    
+    static func editTask(viewModel: TodoListManger, task: TodoTask, newTask: inout String) {
+        viewModel.editTask(task, newTask: newTask)
+        newTask = ""
+    }
 }
