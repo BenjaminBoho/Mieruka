@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11CB2D72A8F551800C30D1F /* EditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CB2D62A8F551800C30D1F /* EditManager.swift */; };
 		B13B4D082A8B2B09003BD45A /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4D072A8B2B09003BD45A /* TaskController.swift */; };
 		B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */; };
 		B1C322522A8A12AB004FFE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322512A8A12AB004FFE37 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B11CB2D62A8F551800C30D1F /* EditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditManager.swift; sourceTree = "<group>"; };
 		B13B4D072A8B2B09003BD45A /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		B1C3224A2A8A12AB004FFE37 /* Mieruka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mieruka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaApp.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				B1C3225F2A8A1720004FFE37 /* ContentView.swift */,
 				B1C322652A8A1BA2004FFE37 /* TodoListManger.swift */,
 				B13B4D072A8B2B09003BD45A /* TaskController.swift */,
+				B11CB2D62A8F551800C30D1F /* EditManager.swift */,
 				B1C322512A8A12AB004FFE37 /* Assets.xcassets */,
 				B1C322532A8A12AB004FFE37 /* Preview Content */,
 			);
@@ -147,6 +150,7 @@
 				B13B4D082A8B2B09003BD45A /* TaskController.swift in Sources */,
 				B1C322602A8A1720004FFE37 /* ContentView.swift in Sources */,
 				B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */,
+				B11CB2D72A8F551800C30D1F /* EditManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

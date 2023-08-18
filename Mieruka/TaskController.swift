@@ -14,8 +14,8 @@ struct TaskController {
         newTask = ""
     }
     
-    static func taskRow(viewModel: TodoListManger, task: TodoTask) -> some View {
-        HStack{
+    static func taskRow(viewModel: TodoListManger, task: TodoTask, newTask: Binding<String>) -> some View {
+        HStack {
             Button(action: {
                 viewModel.toggleTaskCompleted(task)
             }) {
@@ -23,10 +23,17 @@ struct TaskController {
             }
             Text(task.task)
                 .strikethrough(task.completed, color: .black)
-                .foregroundColor(task.completed ? .gray: .primary)
+                .foregroundColor(task.completed ? .gray : .primary)
+            Spacer()
+            Button(action: {
+                newTask.wrappedValue = task.task // Set the text field value to the task's content
+            }) {
+                Image(systemName: "pencil")
+            }
         }
     }
-    
+
+
     static func taskInputRow(newTask: Binding<String>, viewModel: TodoListManger) -> some View {
         HStack {
             TextField("Add a task", text: newTask)

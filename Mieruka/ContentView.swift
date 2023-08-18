@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = TodoListManger()
     @State private var newTask = ""
+    @State private var editedTask = ""
     
     var body: some View {
         NavigationView {
@@ -24,7 +25,7 @@ struct ContentView: View {
         VStack {
             List {
                 ForEach(viewModel.todoItems) { task in
-                    TaskController.taskRow(viewModel: viewModel, task: task)
+                    TaskController.taskRow(viewModel: viewModel, task: task, newTask: $newTask)
                 }
                 .onDelete(perform: viewModel.removeTasks)
             }
