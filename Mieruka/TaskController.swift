@@ -26,7 +26,7 @@ struct TaskController {
                 .foregroundColor(task.completed ? .gray : .primary)
             Spacer()
             Button(action: {
-                newTask.wrappedValue = task.task // Set the text field value to the task's content
+                newTask.wrappedValue = task.task
             }) {
                 Image(systemName: "pencil")
             }
