@@ -7,24 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B11CB2D72A8F551800C30D1F /* EditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CB2D62A8F551800C30D1F /* EditManager.swift */; };
+		B10B32C32A9337B300D27C36 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B32C22A9337B300D27C36 /* ListController.swift */; };
+		B10B32C52A946CDA00D27C36 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B32C42A946CDA00D27C36 /* TaskRow.swift */; };
 		B13B4D082A8B2B09003BD45A /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4D072A8B2B09003BD45A /* TaskController.swift */; };
 		B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */; };
 		B1C322522A8A12AB004FFE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322512A8A12AB004FFE37 /* Assets.xcassets */; };
 		B1C322552A8A12AB004FFE37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322542A8A12AB004FFE37 /* Preview Assets.xcassets */; };
 		B1C322602A8A1720004FFE37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3225F2A8A1720004FFE37 /* ContentView.swift */; };
-		B1C322662A8A1BA2004FFE37 /* TodoListManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C322652A8A1BA2004FFE37 /* TodoListManger.swift */; };
+		B1C322662A8A1BA2004FFE37 /* TodoListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C322652A8A1BA2004FFE37 /* TodoListManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B11CB2D62A8F551800C30D1F /* EditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditManager.swift; sourceTree = "<group>"; };
+		B10B32C22A9337B300D27C36 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		B10B32C42A946CDA00D27C36 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
 		B13B4D072A8B2B09003BD45A /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		B1C3224A2A8A12AB004FFE37 /* Mieruka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mieruka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaApp.swift; sourceTree = "<group>"; };
 		B1C322512A8A12AB004FFE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1C322542A8A12AB004FFE37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B1C3225F2A8A1720004FFE37 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B1C322652A8A1BA2004FFE37 /* TodoListManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListManger.swift; sourceTree = "<group>"; };
+		B1C322652A8A1BA2004FFE37 /* TodoListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +61,10 @@
 			children = (
 				B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */,
 				B1C3225F2A8A1720004FFE37 /* ContentView.swift */,
-				B1C322652A8A1BA2004FFE37 /* TodoListManger.swift */,
+				B1C322652A8A1BA2004FFE37 /* TodoListManager.swift */,
 				B13B4D072A8B2B09003BD45A /* TaskController.swift */,
-				B11CB2D62A8F551800C30D1F /* EditManager.swift */,
+				B10B32C22A9337B300D27C36 /* ListController.swift */,
+				B10B32C42A946CDA00D27C36 /* TaskRow.swift */,
 				B1C322512A8A12AB004FFE37 /* Assets.xcassets */,
 				B1C322532A8A12AB004FFE37 /* Preview Content */,
 			);
@@ -146,11 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1C322662A8A1BA2004FFE37 /* TodoListManger.swift in Sources */,
+				B1C322662A8A1BA2004FFE37 /* TodoListManager.swift in Sources */,
+				B10B32C32A9337B300D27C36 /* ListController.swift in Sources */,
 				B13B4D082A8B2B09003BD45A /* TaskController.swift in Sources */,
 				B1C322602A8A1720004FFE37 /* ContentView.swift in Sources */,
 				B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */,
-				B11CB2D72A8F551800C30D1F /* EditManager.swift in Sources */,
+				B10B32C52A946CDA00D27C36 /* TaskRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

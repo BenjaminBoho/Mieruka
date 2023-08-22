@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = TodoListManger()
+    var viewModel = TodoListManager()
     @State private var newTask = ""
     @State private var editedTask = ""
+    @State private var newListName = ""
     
     var body: some View {
         NavigationView {
@@ -24,12 +25,17 @@ struct ContentView: View {
     private var contentView: some View {
         VStack {
             List {
-                ForEach(viewModel.todoItems) { task in
-                    TaskController.taskRow(viewModel: viewModel, task: task, newTask: $newTask)
+                ForEach(viewModel.todoLists) { list in
+                    Section(header: Text(list.name), content: {
+                        ForEach(list.tasks.sorted(by: {$0.completed || $1.completed } )) { task in
+                            TaskRow(task: task)
+                        }
+                        TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel, listIndex: viewModel.todoLists.firstIndex(of: list)!)
+                    })
                 }
-                .onDelete(perform: viewModel.removeTasks)
+//                .onDelete(perform: viewModel.removeTasks)
             }
-            TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel)
+            ListController.addListButton(newListName: $newListName, viewModel: viewModel)
         }
     }
 }

@@ -9,46 +9,21 @@ import Foundation
 import SwiftUI
 
 struct TaskController {
-    static func addNewTask(viewModel: TodoListManger, newTask: inout String) {
-        viewModel.addTask(newTask)
-        newTask = ""
-    }
-    
-    static func taskRow(viewModel: TodoListManger, task: TodoTask, newTask: Binding<String>) -> some View {
-        HStack {
-            Button(action: {
-                viewModel.toggleTaskCompleted(task)
-            }) {
-                Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
-            }
-            Text(task.task)
-                .strikethrough(task.completed, color: .black)
-                .foregroundColor(task.completed ? .gray : .primary)
-            Spacer()
-            Button(action: {
-                newTask.wrappedValue = task.task
-            }) {
-                Image(systemName: "pencil")
-            }
+    static func addNewTask(viewModel: TodoListManager, newTask: inout String, listIndex: Int) {
+            viewModel.addTask(newTask, toListAtIndex: listIndex)
+            newTask = ""
         }
-    }
 
-
-    static func taskInputRow(newTask: Binding<String>, viewModel: TodoListManger) -> some View {
+    static func taskInputRow(newTask: Binding<String>, viewModel: TodoListManager, listIndex: Int) -> some View {
         HStack {
             TextField("Add a task", text: newTask)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             Button(action: {
-                TaskController.addNewTask(viewModel: viewModel, newTask: &newTask.wrappedValue)
+                TaskController.addNewTask(viewModel: viewModel, newTask: &newTask.wrappedValue, listIndex: listIndex)
             }) {
                 Image(systemName: "plus")
                     .font(.title)
             }
         }
-    }
-    
-    static func editTask(viewModel: TodoListManger, task: TodoTask, newTask: inout String) {
-        viewModel.editTask(task, newTask: newTask)
-        newTask = ""
     }
 }
