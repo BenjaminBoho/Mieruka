@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct TaskRow: View {
-    @StateObject var task: TodoTask
+struct TodoTaskView: View {
+    @Binding var task: TodoTask
     
     var body: some View {
         HStack {
             Button(action: {
-                task.completed.toggle()
+                withAnimation {
+                    task.completed.toggle()
+                }
             }) {
                 Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
             }
@@ -23,9 +25,9 @@ struct TaskRow: View {
         }
     }
 }
-
-struct TaskRow_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskRow(task: .init(task: "123" ))
-    }
-}
+//
+//struct TaskRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskRow(task: . .init(task: "123" ))
+//    }
+//}
