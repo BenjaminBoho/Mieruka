@@ -1,5 +1,5 @@
 //
-//  TodoListViewModel.swift
+//  TodoListManager.swift
 //  Mieruka
 //
 //  Created by れい on 2023/08/14.
@@ -29,7 +29,7 @@ class TodoTask: Identifiable, ObservableObject {
     @Published var completed = false
 }
 
-class TodoList: Identifiable,Equatable ,ObservableObject {
+class TodoList: Identifiable ,Equatable ,ObservableObject {
     init(name: String) {
         self.name = name
     }
@@ -44,13 +44,28 @@ class TodoList: Identifiable,Equatable ,ObservableObject {
     func toggleTaskCompleted(_ item: TodoTask) {
         if let index = tasks.firstIndex(where: { $0.id == item.id }) {
             tasks[index].completed.toggle()
-//            reorderTasks()
+            reorderTasks()
         }
     }
     
+    private func reorderTasks() {
+        var uncompletedTasks: [TodoTask] = []
+                var completedTasks: [TodoTask] = []
+
+                for task in tasks {
+                    if task.completed {
+                        completedTasks.append(task)
+                    } else {
+                        uncompletedTasks.append(task)
+                    }
+                }
+
+                tasks = uncompletedTasks + completedTasks
+            }
+    
     func removeTasks(at offsets: IndexSet) {
-        tasks.remove(atOffsets: offsets)
-    }
+            tasks.remove(atOffsets: offsets)
+        }
     
     func editTask(_ item: TodoTask, newTask: String) {
         if let index = tasks.firstIndex(where: { $0.id == item.id }) {

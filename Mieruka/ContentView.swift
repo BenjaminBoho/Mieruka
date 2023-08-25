@@ -9,16 +9,28 @@ import Foundation
 import SwiftUI
 
 struct ContentView: View {
+    
     var viewModel = TodoListManager()
     @State private var newTask = ""
     @State private var editedTask = ""
     @State private var newListName = ""
     
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationView {
             contentView
-                .padding()
-                .navigationTitle("Todo List")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("Todo List")
+                            .foregroundColor(.white)
+                            .toolbarColorScheme(.dark)
+                            .font(.system(size: 30, weight: .bold, design: .monospaced))
+                    }
+                }
+                .background(Color(red: 40 / 255.0, green: 40 / 255.0, blue: 40 / 255.0))
         }
     }
     
@@ -27,15 +39,20 @@ struct ContentView: View {
             List {
                 ForEach(viewModel.todoLists) { list in
                     Section(header: Text(list.name), content: {
-                        ForEach(list.tasks.sorted(by: {$0.completed || $1.completed } )) { task in
+                        ForEach(list.tasks) { task in
                             TaskRow(task: task)
+                                .onTapGesture {
+                                    viewModel.todoLists[viewModel.todoLists.firstIndex(of: list)!].toggleTaskCompleted(task)
+                                }
                         }
-                        TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel, listIndex: viewModel.todoLists.firstIndex(of: list)!)
+                        .onDelete(perform: list.removeTasks)
                     })
+                    TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel, listIndex: viewModel.todoLists.firstIndex(of: list)!)
                 }
-//                .onDelete(perform: viewModel.removeTasks)
             }
+            .cornerRadius(10)
             ListController.addListButton(newListName: $newListName, viewModel: viewModel)
         }
+        .padding()
     }
 }

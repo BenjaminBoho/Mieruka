@@ -1,5 +1,5 @@
 //
-//  ListManager.swift
+//  ListController.swift
 //  Mieruka
 //
 //  Created by れい on 2023/08/21.
@@ -17,6 +17,7 @@ struct ListController {
                 ListController.addNewList(viewModel: viewModel, newListName: &newListName.wrappedValue)
             }) {
                 Text("Add List")
+                    .foregroundColor(Color.white)
             }
         }
     }

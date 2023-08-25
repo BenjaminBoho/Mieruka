@@ -11,7 +11,7 @@ import SwiftUI
 struct MierukaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Firstpage()
         }
     }
 }
