@@ -38,16 +38,7 @@ struct ContentView: View {
         VStack {
             List {
                 ForEach(viewModel.todoLists) { list in
-                    Section(header: Text(list.name), content: {
-                        ForEach(list.tasks) { task in
-                            TaskRow(task: task)
-                                .onTapGesture {
-                                    viewModel.todoLists[viewModel.todoLists.firstIndex(of: list)!].toggleTaskCompleted(task)
-                                }
-                        }
-                        .onDelete(perform: list.removeTasks)
-                    })
-                    TaskController.taskInputRow(newTask: $newTask, viewModel: viewModel, listIndex: viewModel.todoLists.firstIndex(of: list)!)
+                    TodoListView(todoList: list)
                 }
             }
             .cornerRadius(10)

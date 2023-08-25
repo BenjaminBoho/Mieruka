@@ -30,24 +30,4 @@ struct ListController {
     static func deleteFiles(viewModel: TodoListManager, at offsets: IndexSet) {
         viewModel.todoLists.remove(atOffsets: offsets)
     }
-    
-    static func addTaskButton(newTask: Binding<String>, viewModel: TodoListManager, listIndex: Int?) -> some View {
-        HStack {
-            TextField("New task", text: newTask)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button(action: {
-                ListController.addNewTask(viewModel: viewModel, newTask: &newTask.wrappedValue, listIndex: listIndex)
-            }) {
-                Text("Add Task")
-            }
-        }
-    }
-
-    static func addNewTask(viewModel: TodoListManager, newTask: inout String, listIndex: Int?) {
-        guard let index = listIndex else {
-            return
-        }
-        viewModel.addTask(newTask, toListAtIndex: index)
-        newTask = ""
-    }
 }
