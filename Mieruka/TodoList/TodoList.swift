@@ -10,6 +10,7 @@ class TodoList: Identifiable ,Equatable ,ObservableObject {
     
     let id = UUID()
     var name: String = ""
+    
     @Published var tasks: [TodoTask] = []
     
     func add(task: String) {

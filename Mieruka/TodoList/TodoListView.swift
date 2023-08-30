@@ -9,9 +9,10 @@ import SwiftUI
 
 struct TodoListView: View {
     @StateObject var todoList: TodoList
+    @State private var listIsEditing = false
     
     var body: some View {
-        Section(header: Text(todoList.name), content: {
+        Section(header: TodoListNameView(todoList: todoList), content: {
             ForEach($todoList.tasks.filter { !$0.wrappedValue.completed }) { task in
                 TodoTaskView(task: task)
             }
@@ -25,10 +26,12 @@ struct TodoListView: View {
             .onDelete {
                 todoList.tasks.remove(atOffsets: $0)
             }
+            TodoTaskInputView(viewModel: todoList)
         })
-        TodoTaskInputView(viewModel: todoList)
     }
 }
+
+
 
 //struct TodoListView_Previews: PreviewProvider {
 //    static var previews: some View {

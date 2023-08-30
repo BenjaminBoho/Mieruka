@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Firstpage: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack{
                 Color(red: 40 / 255.0 , green: 40 / 255.0 , blue: 40 / 255.0)
                     .ignoresSafeArea()
@@ -41,7 +41,8 @@ struct Firstpage: View {
                 }
                 .padding()
             }
-        }.accentColor(.white)
+        }
+        .accentColor(.white)
     }
 }
 

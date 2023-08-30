@@ -4,4 +4,5 @@ struct TodoTask: Identifiable {
     let id: UUID = UUID()
     var task: String
     var completed = false
+    var isEditing = false
 }

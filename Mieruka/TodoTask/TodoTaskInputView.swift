@@ -17,13 +17,6 @@ struct TodoTaskInputView: View {
                 .textFieldStyle(.roundedBorder)
             
             Button(action: {
-                
-                #if DEBUG
-                if newTask.isEmpty {
-                    newTask = String(UUID().uuidString.suffix(8))
-                }
-                #endif
-                
                 viewModel.add(task: newTask)
                 newTask = ""
             }) {

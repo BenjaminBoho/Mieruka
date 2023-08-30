@@ -14,6 +14,7 @@
 		B10B32C32A9337B300D27C36 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B32C22A9337B300D27C36 /* ListController.swift */; };
 		B10B32C52A946CDA00D27C36 /* TodoTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B32C42A946CDA00D27C36 /* TodoTaskView.swift */; };
 		B115D7782A95F7B40026731B /* Firstpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115D7772A95F7B40026731B /* Firstpage.swift */; };
+		B19C4F302A9ECED600DA58D0 /* TodoListNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C4F2F2A9ECED600DA58D0 /* TodoListNameView.swift */; };
 		B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */; };
 		B1C322522A8A12AB004FFE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322512A8A12AB004FFE37 /* Assets.xcassets */; };
 		B1C322552A8A12AB004FFE37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322542A8A12AB004FFE37 /* Preview Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		B10B32C42A946CDA00D27C36 /* TodoTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTaskView.swift; sourceTree = "<group>"; };
 		B115D7742A95EA1F0026731B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B115D7772A95F7B40026731B /* Firstpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firstpage.swift; sourceTree = "<group>"; };
+		B19C4F2F2A9ECED600DA58D0 /* TodoListNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListNameView.swift; sourceTree = "<group>"; };
 		B1C3224A2A8A12AB004FFE37 /* Mieruka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mieruka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaApp.swift; sourceTree = "<group>"; };
 		B1C322512A8A12AB004FFE37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				B10B32C42A946CDA00D27C36 /* TodoTaskView.swift */,
+				197F9D1E2A9868CC004FFB03 /* TodoTaskInputView.swift */,
 				197F9D172A986694004FFB03 /* TodoTask.swift */,
 			);
 			path = TodoTask;
@@ -63,7 +66,7 @@
 			children = (
 				197F9D1A2A9867EA004FFB03 /* TodoListView.swift */,
 				197F9D1C2A9867FF004FFB03 /* TodoList.swift */,
-				197F9D1E2A9868CC004FFB03 /* TodoTaskInputView.swift */,
+				B19C4F2F2A9ECED600DA58D0 /* TodoListNameView.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				B1C322602A8A1720004FFE37 /* ContentView.swift in Sources */,
 				B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */,
 				B10B32C52A946CDA00D27C36 /* TodoTaskView.swift in Sources */,
+				B19C4F302A9ECED600DA58D0 /* TodoListNameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

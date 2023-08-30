@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TodoTaskView: View {
     @Binding var task: TodoTask
+    @State private var isEditing = false
     
     var body: some View {
         HStack {
@@ -19,8 +20,23 @@ struct TodoTaskView: View {
             }) {
                 Image(systemName: task.completed ? "checkmark.circle.fill" : "circle")
             }
-                TextField("", text: $task.task)
-                    .textFieldStyle(.roundedBorder)
+            
+            if isEditing {
+                TextField("", text: $task.task, onCommit: {
+                    isEditing.toggle()
+                })
+                .textFieldStyle(.roundedBorder)
+                .onAppear{
+                    isEditing = true
+                }
+            } else {
+                Text(task.task)
+                    .font(.headline)
+                    .onTapGesture{
+                        isEditing.toggle()
+                    }
+            }
+            
             Spacer()
         }
     }

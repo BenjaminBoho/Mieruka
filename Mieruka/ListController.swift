@@ -27,7 +27,7 @@ struct ListController {
         newListName = ""
     }
     
-    static func deleteFiles(viewModel: TodoListManager, at offsets: IndexSet) {
+    static func deleteList(viewModel: TodoListManager, at offsets: IndexSet) {
         viewModel.todoLists.remove(atOffsets: offsets)
     }
 }

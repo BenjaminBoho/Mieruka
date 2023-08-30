@@ -45,5 +45,6 @@ struct ContentView: View {
             ListController.addListButton(newListName: $newListName, viewModel: viewModel)
         }
         .padding()
+        .accentColor(.gray)
     }
 }
