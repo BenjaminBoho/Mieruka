@@ -10,6 +10,7 @@ import SwiftUI
 struct TodoListView: View {
     @StateObject var todoList: TodoList
     @State private var listIsEditing = false
+    @State private var todoItemsData: Data?
     
     var body: some View {
         Section(header: TodoListNameView(todoList: todoList), content: {
@@ -19,7 +20,7 @@ struct TodoListView: View {
             .onDelete {
                 todoList.tasks.remove(atOffsets: $0)
             }
-
+            
             ForEach($todoList.tasks.filter { $0.wrappedValue.completed }) { task in
                 TodoTaskView(task: task)
             }
@@ -30,8 +31,6 @@ struct TodoListView: View {
         })
     }
 }
-
-
 
 //struct TodoListView_Previews: PreviewProvider {
 //    static var previews: some View {

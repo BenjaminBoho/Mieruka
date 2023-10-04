@@ -1,3 +1,10 @@
+//
+//  TodoList.swift
+//  Mieruka
+//
+//  Created by れい on 2023/08/30.
+//
+
 import Foundation
 
 class TodoList: Identifiable ,Equatable ,ObservableObject {
@@ -8,12 +15,12 @@ class TodoList: Identifiable ,Equatable ,ObservableObject {
         return lhs.id == rhs.id
     }
     
-    let id = UUID()
+    var id = UUID()
     var name: String = ""
     
     @Published var tasks: [TodoTask] = []
     
     func add(task: String) {
-        tasks += [TodoTask(task: task)]
+        tasks += [TodoTask(id: UUID(), task: task)]
     }
 }

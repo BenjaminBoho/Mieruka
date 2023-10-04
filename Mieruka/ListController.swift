@@ -26,8 +26,4 @@ struct ListController {
         viewModel.addList(named: newListName)
         newListName = ""
     }
-    
-    static func deleteList(viewModel: TodoListManager, at offsets: IndexSet) {
-        viewModel.todoLists.remove(atOffsets: offsets)
-    }
 }

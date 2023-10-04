@@ -22,6 +22,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             contentView
+                .onAppear() {
+                    fetchTodoList()
+                }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Text("Todo List")

@@ -30,7 +30,7 @@ struct Firstpage: View {
                     }
                     Spacer()
                     NavigationLink(destination: ContentView()) {
-                        Text("Enter TodoList")
+                        Text("TodoList")
                             .foregroundColor(.gray)
                             .padding()
                             .background(Color.white)
