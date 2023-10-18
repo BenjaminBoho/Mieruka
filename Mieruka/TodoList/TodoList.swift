@@ -7,16 +7,28 @@
 
 import Foundation
 
-class TodoList: Identifiable ,Equatable ,ObservableObject {
+struct TodoListHeader: Codable {
+    let id: String
+    let name: String
+}
+
+class TodoList: Identifiable, Equatable, ObservableObject {
     init(name: String) {
+        self.id = UUID().uuidString
         self.name = name
     }
+    
+    init(header: TodoListHeader) {
+        self.id = header.id
+        self.name = header.name
+    }
+    
     static func == (lhs: TodoList, rhs: TodoList) -> Bool {
         return lhs.id == rhs.id
     }
     
-    var id = UUID()
-    var name: String = ""
+    let id: String
+    var name: String
     
     @Published var tasks: [TodoTask] = []
     

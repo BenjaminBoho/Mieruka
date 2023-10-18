@@ -1,10 +1,3 @@
-//
-//  TodoTaskInputView.swift
-//  Mieruka
-//
-//  Created by Kakeru Fukuda on 2023/08/25.
-//
-
 import SwiftUI
 
 struct TodoTaskInputView: View {

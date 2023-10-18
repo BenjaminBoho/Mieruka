@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ListItem: Codable {
-    var id: Int
-    var name: String
-}
+//struct ListItem: Codable {
+//    var id: Int
+//    var name: String
+//}
 
-func decodeJSON() throws -> ListItem {
+func decodeJSON() throws -> TodoList {
     let json = """
     {
         "id": 1,
@@ -21,7 +21,7 @@ func decodeJSON() throws -> ListItem {
     """.data(using: .utf8)!
 
     let decoder = JSONDecoder()
-    let item = try decoder.decode(ListItem.self, from: json)
-    return item
+    let item = try decoder.decode(TodoListHeader.self, from: json)
+    return TodoList(header: item)
 }
 
