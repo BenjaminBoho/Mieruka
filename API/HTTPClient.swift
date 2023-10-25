@@ -127,11 +127,7 @@ class API: NSObject, URLSessionDelegate  {
             }
 
             if response.statusCode == 200 {
-                // Print the JSON response data before decoding
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("JSON Response: \(jsonString)")
-                }
-
+                
                 do {
                     let decoder = JSONDecoder()
                     let taskHeaders = try decoder.decode([TodoTaskHeader].self, from: data)
