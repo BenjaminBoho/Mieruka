@@ -9,38 +9,38 @@ import Foundation
 
 class API: NSObject, URLSessionDelegate  {
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-            if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
-                completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-            }
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
         }
+    }
     
     func GET(completion: @escaping (Result<[TodoList], Error>) -> Void) {
         let apiURL = "https://localhost:7263/api/TodoApp/list"
         guard let url = URL(string: apiURL) else {
-                    completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
-                    return
-                }
-
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
-                session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-                session.configuration.shouldUseExtendedBackgroundIdleMode = true
-                session.configuration.timeoutIntervalForRequest = 30
-
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+        
         let task = session.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        completion(.failure(error))
-                        return
-                    }
-
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
             guard let data = data, let response = response as? HTTPURLResponse else {
                 completion(.failure(NSError(domain: "No data or no response", code: 0, userInfo: nil)))
                 return
             }
-
+            
             if response.statusCode == 200 {
                 do {
                     let decoder = JSONDecoder()
@@ -55,15 +55,133 @@ class API: NSObject, URLSessionDelegate  {
         }
         task.resume()
     }
-}
-
-func fetchTodoList() {
-    API().GET { result in
-        switch result {
-        case .success(let items):
-            print("JSON Response: \(items.count)")
-        case .failure(let error):
-            print("Failed to fetch todo items: \(error.localizedDescription)")
+    
+    func POST(todoList: TodoList, completion: @escaping (Result<Void, Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/InsertList"
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(todoList)
+            
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+            session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            session.configuration.shouldUseExtendedBackgroundIdleMode = true
+            session.configuration.timeoutIntervalForRequest = 30
+            
+            let task = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    completion(.failure(NSError(domain: "No response", code: 0, userInfo: nil)))
+                    return
+                }
+                
+                if response.statusCode == 200 {
+                    completion(.success(()))
+                } else {
+                    completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+                }
+            }
+            task.resume()
+        } catch {
+            completion(.failure(error))
         }
     }
+    
+    func GETTasks(completion: @escaping (Result<[TodoTask], Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/task"
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "No data or no response", code: 0, userInfo: nil)))
+                return
+            }
+
+            if response.statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    let tasks = try decoder.decode([TodoTask].self, from: data)
+                    completion(.success(tasks))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else {
+                completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+            }
+        }
+        task.resume()
+    }
+    
+    func POSTTodoTask(todoTask: TodoTask, completion: @escaping (Result<Void, Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/InsertTask"
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(todoTask)
+            
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+            session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+            session.configuration.shouldUseExtendedBackgroundIdleMode = true
+            session.configuration.timeoutIntervalForRequest = 30
+            
+            let task = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    completion(.failure(NSError(domain: "No response", code: 0, userInfo: nil)))
+                    return
+                }
+                
+                if response.statusCode == 200 {
+                    completion(.success(()))
+                } else {
+                    completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+                }
+            }
+            task.resume()
+        } catch {
+            completion(.failure(error))
+        }
+    }
+
 }

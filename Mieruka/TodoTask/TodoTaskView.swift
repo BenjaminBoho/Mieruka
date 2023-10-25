@@ -22,7 +22,7 @@ struct TodoTaskView: View {
             }
             
             if isEditing {
-                TextField("", text: $task.task, onCommit: {
+                TextField("", text: $task.tasks, onCommit: {
                     isEditing.toggle()
                 })
                 .textFieldStyle(.roundedBorder)
@@ -30,7 +30,7 @@ struct TodoTaskView: View {
                     isEditing = true
                 }
             } else {
-                Text(task.task)
+                Text(task.tasks)
                     .font(.headline)
                     .onTapGesture{
                         isEditing.toggle()

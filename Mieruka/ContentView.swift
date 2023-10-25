@@ -10,10 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var viewModel = TodoListManager()
+    @StateObject var viewModel = TodoListManager()
     @State private var newTask = ""
     @State private var editedTask = ""
     @State private var newListName = ""
+    
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -22,8 +23,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             contentView
-                .onAppear() {
-                    fetchTodoList()
+                .onAppear {
+                    viewModel.fetchTodoList()
+                    viewModel.fetchTodoTasks()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
