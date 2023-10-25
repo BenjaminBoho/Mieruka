@@ -29,6 +29,9 @@ struct TodoListView: View {
             }
             TodoTaskInputView(viewModel: todoList)
         })
+        .onAppear {
+            todoList.fetchTodoTasks()
+        }
     }
 }
 

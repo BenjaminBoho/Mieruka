@@ -127,21 +127,32 @@ class API: NSObject, URLSessionDelegate  {
             }
 
             if response.statusCode == 200 {
+                // Print the JSON response data before decoding
+                if let jsonString = String(data: data, encoding: .utf8) {
+                    print("JSON Response: \(jsonString)")
+                }
+
                 do {
                     let decoder = JSONDecoder()
-                    let tasks = try decoder.decode([TodoTask].self, from: data)
+                    let taskHeaders = try decoder.decode([TodoTaskHeader].self, from: data)
+                    let tasks = taskHeaders.map { header in
+                        return TodoTask(id: header.id, tasks: header.tasks, completed: header.completed)
+                    }
+                    
                     completion(.success(tasks))
                 } catch {
                     completion(.failure(error))
                 }
+
             } else {
                 completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
             }
         }
         task.resume()
     }
+
     
-    func POSTTodoTask(todoTask: TodoTask, completion: @escaping (Result<Void, Error>) -> Void) {
+    func POSTTodoTask(todoTask: TodoTaskHeader, completion: @escaping (Result<Void, Error>) -> Void) {
         let apiURL = "https://localhost:7263/api/TodoApp/InsertTask"
         guard let url = URL(string: apiURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))

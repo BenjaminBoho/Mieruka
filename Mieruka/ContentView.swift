@@ -25,7 +25,6 @@ struct ContentView: View {
             contentView
                 .onAppear {
                     viewModel.fetchTodoList()
-                    viewModel.fetchTodoTasks()
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

@@ -29,16 +29,15 @@ func encodeJSON(todoList: TodoList) throws -> Data {
     return jsonData
 }
 
-func decodeJSON(data: Data) throws -> TodoTask {
+func decodeJSON() throws -> TodoTaskHeader {
     let json = """
     {
         "id": 1,
-        "name": "",
-        "List_Id: "",
+        "tasks": "",
+        "complete: false
     }
     """.data(using: .utf8)!
     let decoder = JSONDecoder()
-
-    _ = try decoder.decode(TodoTask.self, from: json)
-        return TodoTask(id: String(), tasks: String())
+    let task = try decoder.decode(TodoTaskHeader.self, from: json)
+    return task
 }

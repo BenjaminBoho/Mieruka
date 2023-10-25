@@ -1,6 +1,6 @@
 import Foundation
 
-struct TodoTask: Identifiable, Codable {
+internal struct TodoTask: Identifiable {
     let id: String
     var tasks: String
     var completed = false

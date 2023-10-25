@@ -33,11 +33,12 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
     @Published var tasks: [TodoTask] = []
     
     func add(task: String) {
-//        tasks += [TodoTask(id: String(), task: task)]
-        let newTask = TodoTask(id: UUID().uuidString, tasks: task)
+        //tasks += [TodoTask(id: String(), task: task)]
+        let newTask = TodoTask(id: UUID().uuidString, tasks: String(), completed: false)
         tasks.append(newTask)
+        let taskHeader = TodoTaskHeader(id: newTask.id, tasks: newTask.tasks, completed: newTask.completed)
         
-        API().POSTTodoTask(todoTask: newTask) { result in
+        API().POSTTodoTask(todoTask: taskHeader) { result in
             switch result {
             case .success:
                 print("Task added successfully.")
@@ -46,6 +47,19 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
             }
         }
     }
+    
+    func fetchTodoTasks() {
+            API().GETTasks { result in
+                switch result {
+                case .success(let tasks):
+                    DispatchQueue.main.async {
+                        self.tasks = tasks
+                    }
+                case .failure(let error):
+                    print("Failed to fetch todo tasks: \(error.localizedDescription)")
+                }
+            }
+        }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
