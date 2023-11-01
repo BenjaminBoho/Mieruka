@@ -16,8 +16,9 @@ struct ListController {
             Button(action: {
                 ListController.addNewList(viewModel: viewModel, newListName: &newListName.wrappedValue)
             }) {
-                Text("Add List")
+                Image(systemName: "plus")
                     .foregroundColor(Color.white)
+                    .padding()
             }
         }
     }

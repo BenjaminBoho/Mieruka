@@ -99,8 +99,8 @@ class API: NSObject, URLSessionDelegate  {
         }
     }
     
-    func GETTasks(completion: @escaping (Result<[TodoTask], Error>) -> Void) {
-        let apiURL = "https://localhost:7263/api/TodoApp/task"
+    func GETTasks(listId: String, completion: @escaping (Result<[TodoTask], Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/task?listId=\(listId)"
         guard let url = URL(string: apiURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
@@ -132,7 +132,7 @@ class API: NSObject, URLSessionDelegate  {
                     let decoder = JSONDecoder()
                     let taskHeaders = try decoder.decode([TodoTaskHeader].self, from: data)
                     let tasks = taskHeaders.map { header in
-                        return TodoTask(id: header.id, tasks: header.tasks, completed: header.completed)
+                        return TodoTask(id: header.taskId, tasks: header.tasks, completed: header.completed, listId: header.listId)
                     }
                     
                     completion(.success(tasks))
@@ -231,7 +231,7 @@ class API: NSObject, URLSessionDelegate  {
     }
     
     func updateTask(task: TodoTask, completion: @escaping (Result<Void, Error>) -> Void) {
-        let taskHeader = TodoTaskHeader(id: task.id, tasks: task.tasks, completed: task.completed)
+        let taskHeader = TodoTaskHeader(taskId: task.id, tasks: task.tasks, completed: task.completed, listId: task.listId)
         let apiURL = "https://localhost:7263/api/TodoApp/taskUpdate?id=\(task.id)"
         guard let url = URL(string: apiURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))

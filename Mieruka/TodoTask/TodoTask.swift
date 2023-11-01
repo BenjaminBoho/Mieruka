@@ -5,4 +5,5 @@ internal struct TodoTask: Identifiable {
     var tasks: String
     var completed = false
     var isEditing = false
+    let listId: String
 }

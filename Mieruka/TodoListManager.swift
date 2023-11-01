@@ -43,7 +43,8 @@ class TodoListManager: ObservableObject {
     }
     
     func fetchTodoTasks(for todoList: TodoList) {
-            API().GETTasks { result in
+        let listIDToFetch = todoList.id
+        API().GETTasks(listId: listIDToFetch) { result in
                 switch result {
                 case .success(let tasks):
                     DispatchQueue.main.async {

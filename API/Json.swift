@@ -32,9 +32,10 @@ func encodeJSON(todoList: TodoList) throws -> Data {
 func decodeJSON() throws -> TodoTaskHeader {
     let json = """
     {
-        "id": 1,
-        "tasks": "",
-        "complete: false
+        "taskId": "",
+        "task_name": "",
+        "complete": false,
+        "listId": ""
     }
     """.data(using: .utf8)!
     let decoder = JSONDecoder()
@@ -45,12 +46,12 @@ func decodeJSON() throws -> TodoTaskHeader {
 extension TodoList {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
+        try container.encode(id, forKey: .listId)
         try container.encode(name, forKey: .name)
     }
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case listId
         case name
     }
 }

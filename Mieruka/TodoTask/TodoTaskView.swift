@@ -24,14 +24,7 @@ struct TodoTaskView: View {
             if isEditing {
                 TextField("", text: $task.tasks, onCommit: {
                     isEditing.toggle()
-                    API().updateTask(task: task) { result in
-                        switch result {
-                        case .success:
-                            print("Task updated successfully.")
-                        case .failure(let error):
-                            print("Failed to update task: \(error.localizedDescription)")
-                        }
-                    }
+                    updateTask(task: task)
                 })
                 .textFieldStyle(.roundedBorder)
                 .onAppear{

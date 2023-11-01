@@ -15,7 +15,7 @@ struct TodoListDelete: View {
             onDelete()
         }) {
             Text("Delete List")
-                .foregroundColor(.red)
+                .foregroundColor(.white)
         }
     }
 }

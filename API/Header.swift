@@ -8,7 +8,8 @@
 import Foundation
 
 internal struct TodoTaskHeader: Codable {
-    let id: String
+    let taskId: String
     let tasks: String
     let completed : Bool
+    let listId: String
 }

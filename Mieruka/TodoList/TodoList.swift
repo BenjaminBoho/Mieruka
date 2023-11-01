@@ -8,7 +8,7 @@
 import Foundation
 
 struct TodoListHeader: Codable {
-    let id: String
+    let listId: String
     let name: String
 }
 
@@ -19,7 +19,7 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
     }
     
     init(header: TodoListHeader) {
-        self.id = header.id
+        self.id = header.listId
         self.name = header.name
     }
     
@@ -34,10 +34,10 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
     
     //tasks += [TodoTask(id: String(), task: task)]
     func add(task: String) {
-        let newTask = TodoTask(id: UUID().uuidString, tasks: task, completed: false)
+        let newTask = TodoTask(id: UUID().uuidString, tasks: task, completed: false, listId: self.id)
         tasks.append(newTask)
         
-        let taskHeader = TodoTaskHeader(id: newTask.id, tasks: newTask.tasks, completed: newTask.completed)
+        let taskHeader = TodoTaskHeader(taskId: newTask.id, tasks: newTask.tasks, completed: newTask.completed, listId: newTask.listId )
         
         API().POSTTodoTask(todoTask: taskHeader) { result in
             switch result {
