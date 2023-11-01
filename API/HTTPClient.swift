@@ -190,5 +190,126 @@ class API: NSObject, URLSessionDelegate  {
             completion(.failure(error))
         }
     }
+    
+    func updateListName(list: TodoList, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let url = URL(string: "https://localhost:7263/api/TodoApp/listUpdate?id=\(list.id)") else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(list)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(NSError(domain: "Server Error", code: (response as? HTTPURLResponse)?.statusCode ?? 0, userInfo: nil)))
+                return
+            }
+            
+            completion(.success(()))
+        }
+        task.resume()
+    }
+    
+    func updateTask(task: TodoTask, completion: @escaping (Result<Void, Error>) -> Void) {
+        let taskHeader = TodoTaskHeader(id: task.id, tasks: task.tasks, completed: task.completed)
+        let apiURL = "https://localhost:7263/api/TodoApp/taskUpdate?id=\(task.id)"
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
 
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(taskHeader)
+        } catch {
+            completion(.failure(error))
+            return
+        }
+
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "No response", code: 0, userInfo: nil)))
+                return
+            }
+
+            if response.statusCode == 200 {
+                completion(.success(()))
+            } else {
+                completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+            }
+        }
+
+        task.resume()
+    }
+    
+    func deleteTask(taskID: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/task/\(taskID)"
+        
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "No response", code: 0, userInfo: nil)))
+                return
+            }
+            
+            if response.statusCode == 200 {
+                completion(.success(()))
+            } else {
+                completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+            }
+        }
+        
+        task.resume()
+    }
 }

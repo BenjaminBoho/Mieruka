@@ -41,4 +41,17 @@ class TodoListManager: ObservableObject {
             }
         }
     }
+    
+    func fetchTodoTasks(for todoList: TodoList) {
+            API().GETTasks { result in
+                switch result {
+                case .success(let tasks):
+                    DispatchQueue.main.async {
+                        todoList.tasks = tasks
+                    }
+                case .failure(let error):
+                    print("Failed to fetch todo tasks: \(error.localizedDescription)")
+                }
+            }
+        }
 }

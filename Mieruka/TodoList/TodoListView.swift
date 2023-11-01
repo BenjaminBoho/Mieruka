@@ -17,8 +17,20 @@ struct TodoListView: View {
             ForEach($todoList.tasks.filter { !$0.wrappedValue.completed }) { task in
                 TodoTaskView(task: task)
             }
-            .onDelete {
-                todoList.tasks.remove(atOffsets: $0)
+            .onDelete { indices in
+                for index in indices {
+                    let task = todoList.tasks[index]
+                    let taskIDToDelete = task.id
+                    API().deleteTask(taskID: taskIDToDelete) { result in
+                        switch result {
+                        case .success:
+                            print("Task deleted successfully.")
+                        case .failure(let error):
+                            print("Failed to delete task: \(error.localizedDescription)")
+                        }
+                    }
+                    todoList.tasks.remove(atOffsets: indices)
+                }
             }
             
             ForEach($todoList.tasks.filter { $0.wrappedValue.completed }) { task in
@@ -30,7 +42,7 @@ struct TodoListView: View {
             TodoTaskInputView(viewModel: todoList)
         })
         .onAppear {
-            todoList.fetchTodoTasks()
+            TodoListManager.shared.fetchTodoTasks(for: todoList)
         }
     }
 }

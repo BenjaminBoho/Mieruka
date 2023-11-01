@@ -32,10 +32,11 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
     
     @Published var tasks: [TodoTask] = []
     
+    //tasks += [TodoTask(id: String(), task: task)]
     func add(task: String) {
-        //tasks += [TodoTask(id: String(), task: task)]
-        let newTask = TodoTask(id: UUID().uuidString, tasks: String(), completed: false)
+        let newTask = TodoTask(id: UUID().uuidString, tasks: task, completed: false)
         tasks.append(newTask)
+        
         let taskHeader = TodoTaskHeader(id: newTask.id, tasks: newTask.tasks, completed: newTask.completed)
         
         API().POSTTodoTask(todoTask: taskHeader) { result in
@@ -48,27 +49,15 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
         }
     }
     
-    func fetchTodoTasks() {
-            API().GETTasks { result in
-                switch result {
-                case .success(let tasks):
-                    DispatchQueue.main.async {
-                        self.tasks = tasks
-                    }
-                case .failure(let error):
-                    print("Failed to fetch todo tasks: \(error.localizedDescription)")
-                }
+    func updateListName(completion: @escaping (Result<Void, Error>) -> Void) {
+        API().updateListName(list: self) { result in
+            switch result {
+            case .success:
+                print("List name updated successfully.")
+            case .failure(let error):
+                print("Failed to update list name: \(error.localizedDescription)")
             }
+            completion(result)
         }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
     }
 }

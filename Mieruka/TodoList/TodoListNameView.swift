@@ -13,8 +13,11 @@ struct TodoListNameView: View {
     
     var body: some View {
         if listIsEditing {
-            TextField("", text: $todoList.name, onCommit: { listIsEditing.toggle()
-            })
+            TextField("", text: $todoList.name, onCommit: {
+                            listIsEditing.toggle()
+                todoList.updateListName { result in
+                }
+                        })
             .textFieldStyle(.roundedBorder)
             .onTapGesture {
                 listIsEditing = true
