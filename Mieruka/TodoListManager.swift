@@ -8,6 +8,8 @@
 import Foundation
 
 class TodoListManager: ObservableObject {
+    
+    private init() {} 
     static let shared = TodoListManager()
     @Published var todoLists: [TodoList] = []
     
@@ -25,8 +27,10 @@ class TodoListManager: ObservableObject {
         }
     }
     
-    func deleteList(at index: Int) {
-        todoLists.remove(at: index)
+    func deleteList(_ list: TodoList) {
+        if let index = todoLists.firstIndex(of: list) {
+            todoLists.remove(at: index)
+        }
     }
     
     func fetchTodoList() {
@@ -36,6 +40,7 @@ class TodoListManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.todoLists = items
                 }
+                print("Fetch list successfully")
             case .failure(let error):
                 print("Failed to fetch todo items: \(error.localizedDescription)")
             }
@@ -45,14 +50,14 @@ class TodoListManager: ObservableObject {
     func fetchTodoTasks(for todoList: TodoList) {
         let listIDToFetch = todoList.id
         API().GETTasks(listId: listIDToFetch) { result in
-                switch result {
-                case .success(let tasks):
-                    DispatchQueue.main.async {
-                        todoList.tasks = tasks
-                    }
-                case .failure(let error):
-                    print("Failed to fetch todo tasks: \(error.localizedDescription)")
+            switch result {
+            case .success(let tasks):
+                DispatchQueue.main.async {
+                    todoList.tasks = tasks
                 }
+            case .failure(let error):
+                print("Failed to fetch todo tasks: \(error.localizedDescription)")
             }
         }
+    }
 }

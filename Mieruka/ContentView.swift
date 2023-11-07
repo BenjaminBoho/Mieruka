@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var viewModel = TodoListManager()
+    @StateObject var viewModel = TodoListManager.shared
     @State private var newTask = ""
     @State private var editedTask = ""
     @State private var newListName = ""

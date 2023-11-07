@@ -29,4 +29,17 @@ internal func updateTask(task: TodoTask) {
         }
     }
 }
-    
+
+internal func deleteTodoList(_ list: TodoList, completion: @escaping () -> Void) {
+    let listIDToDelete = list.id
+    API().deleteList(listID: listIDToDelete) { result in
+        switch result {
+        case .success:
+            print("Todo list deleted successfully.")
+            TodoListManager.shared.fetchTodoList()
+        case .failure(let error):
+            print("Failed to delete todo list: \(error.localizedDescription)")
+            TodoListManager.shared.fetchTodoList()
+        }
+    }
+}

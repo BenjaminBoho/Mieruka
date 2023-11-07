@@ -3,4 +3,84 @@
    uuid = "ABF39467-E2AB-4C10-B7C0-1C38B3A2B971"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/Switch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "deleteTodoList(_:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - cefdbba54c24bb4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.deleteTodoList(Mieruka.TodoList) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - cefdbba54c24bb4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.deleteTodoList(Mieruka.TodoList) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - 4014e562068089c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.deleteTodoList(_: Mieruka.TodoList, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - 4014e562068089c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.deleteTodoList(_: Mieruka.TodoList, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

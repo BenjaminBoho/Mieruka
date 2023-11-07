@@ -14,10 +14,10 @@ struct TodoListNameView: View {
     var body: some View {
         if listIsEditing {
             TextField("", text: $todoList.name, onCommit: {
-                            listIsEditing.toggle()
+                listIsEditing.toggle()
                 todoList.updateListName { result in
                 }
-                        })
+            })
             .textFieldStyle(.roundedBorder)
             .onTapGesture {
                 listIsEditing = true
@@ -26,9 +26,13 @@ struct TodoListNameView: View {
         } else {
             Text(todoList.name)
                 .font(.headline)
-                .onTapGesture{
-                    listIsEditing.toggle()
+            TodoListDelete {
+                deleteTodoList(todoList){
                 }
+            }
+            .onTapGesture{
+                listIsEditing.toggle()
+            }
         }
     }
 }

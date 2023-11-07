@@ -17,6 +17,7 @@
 		B157ACA02A9F0CBE00F4CEFC /* TodoListDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B157AC9F2A9F0CBE00F4CEFC /* TodoListDelete.swift */; };
 		B1996D022ACD4CB00022DF07 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1996D012ACD4CB00022DF07 /* Json.swift */; };
 		B19C4F302A9ECED600DA58D0 /* TodoListNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C4F2F2A9ECED600DA58D0 /* TodoListNameView.swift */; };
+		B1A685822AF21E3B006C1104 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A685812AF21E3B006C1104 /* Switch.swift */; };
 		B1B5F7B62AE9020D009D800F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B5F7B52AE9020D009D800F /* Header.swift */; };
 		B1C3224E2A8A12AB004FFE37 /* MierukaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */; };
 		B1C322522A8A12AB004FFE37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1C322512A8A12AB004FFE37 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		B157AC9F2A9F0CBE00F4CEFC /* TodoListDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListDelete.swift; sourceTree = "<group>"; };
 		B1996D012ACD4CB00022DF07 /* Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		B19C4F2F2A9ECED600DA58D0 /* TodoListNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListNameView.swift; sourceTree = "<group>"; };
+		B1A685812AF21E3B006C1104 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		B1B5F7B52AE9020D009D800F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B1C3224A2A8A12AB004FFE37 /* Mieruka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mieruka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1C3224D2A8A12AB004FFE37 /* MierukaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaApp.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				B1996D012ACD4CB00022DF07 /* Json.swift */,
 				B1E028642ACA8BC700CD458E /* HTTPClient.swift */,
 				B1B5F7B52AE9020D009D800F /* Header.swift */,
+				B1A685812AF21E3B006C1104 /* Switch.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				B1C322662A8A1BA2004FFE37 /* TodoListManager.swift in Sources */,
 				B10B32C32A9337B300D27C36 /* ListController.swift in Sources */,
+				B1A685822AF21E3B006C1104 /* Switch.swift in Sources */,
 				197F9D182A986694004FFB03 /* TodoTask.swift in Sources */,
 				B1E028652ACA8BC700CD458E /* HTTPClient.swift in Sources */,
 				B115D7782A95F7B40026731B /* Firstpage.swift in Sources */,
