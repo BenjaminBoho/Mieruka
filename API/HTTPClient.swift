@@ -346,8 +346,42 @@ class API: NSObject, URLSessionDelegate  {
                 completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
             }
         }
-        
         task.resume()
     }
-
+    
+    func updateTaskCompleted(taskID: String, completed: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        let apiURL = "https://localhost:7263/api/TodoApp/taskUpdateCompleted/\(taskID)?completed=\(completed)"
+        
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
+        session.configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        session.configuration.shouldUseExtendedBackgroundIdleMode = true
+        session.configuration.timeoutIntervalForRequest = 30
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "No response", code: 0, userInfo: nil)))
+                return
+            }
+            
+            if response.statusCode == 200 {
+                completion(.success(()))
+            } else {
+                completion(.failure(NSError(domain: "Server Error", code: response.statusCode, userInfo: nil)))
+            }
+        }
+        task.resume()
+    }
 }
