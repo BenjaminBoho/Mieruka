@@ -17,12 +17,12 @@ class TodoListManager: ObservableObject {
         let newTodoList = TodoList(name: name)
         todoLists.append(newTodoList)
         
-        API().POST(todoList: newTodoList) { result in
+        POSTList(todoList: newTodoList) { result in
             switch result {
-            case .success:
-                print("List added successfully.")
+            case .success(let createdList):
+                print("Successfully created list: \(createdList.name)")
             case .failure(let error):
-                print("Failed to add list: \(error.localizedDescription)")
+                print("Failed to create list: \(error.localizedDescription)")
             }
         }
     }
@@ -33,31 +33,17 @@ class TodoListManager: ObservableObject {
         }
     }
     
-    func fetchTodoList() {
-        API().GET { result in
-            switch result {
-            case .success(let items):
-                DispatchQueue.main.async {
-                    self.todoLists = items
-                }
-                print("Fetch list successfully")
-            case .failure(let error):
-                print("Failed to fetch todo items: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func fetchTodoTasks(for todoList: TodoList) {
-        let listIDToFetch = todoList.id
-        API().GETTasks(listId: listIDToFetch) { result in
-            switch result {
-            case .success(let tasks):
-                DispatchQueue.main.async {
-                    todoList.tasks = tasks
-                }
-            case .failure(let error):
-                print("Failed to fetch todo tasks: \(error.localizedDescription)")
-            }
-        }
-    }
+//    func fetchTodoTasks(for todoList: TodoList) {
+//        let listIDToFetch = todoList.id
+//        API().GETTasks(listId: listIDToFetch) { result in
+//            switch result {
+//            case .success(let tasks):
+//                DispatchQueue.main.async {
+//                    todoList.tasks = tasks
+//                }
+//            case .failure(let error):
+//                print("Failed to fetch todo tasks: \(error.localizedDescription)")
+//            }
+//        }
+//    }
 }

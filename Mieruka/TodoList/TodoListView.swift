@@ -38,7 +38,16 @@ struct TodoListView: View {
             TodoTaskInputView(viewModel: todoList)
         })
         .onAppear {
-            TodoListManager.shared.fetchTodoTasks(for: todoList)
+            fetchTodoTasks(forList: todoList.id) { result in
+                switch result {
+                case .success(let tasks):
+                    DispatchQueue.main.async {
+                        todoList.tasks = tasks
+                    }
+                case .failure(let error):
+                    print("Error fetching tasks: \(error)")
+                }
+            }
         }
     }
 }

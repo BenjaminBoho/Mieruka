@@ -16,13 +16,7 @@ struct TodoTaskView: View {
             Button(action: {
                 withAnimation {
                     task.completed.toggle()
-                    API().updateTaskCompleted(taskID: task.id, completed: task.completed) { result in
-                        switch result {
-                        case .success:
-                            print("Task updated successfully.")
-                        case .failure(let error):
-                            print("Failed to update task: \(error.localizedDescription)")
-                        }
+                    updateTaskCompletion(task: task, completed: task.completed) {
                     }
                 }
             }) {

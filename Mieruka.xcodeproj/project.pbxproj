@@ -27,7 +27,7 @@
 		B1CC6E892ADF98430033D2DD /* MierukaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC6E882ADF98430033D2DD /* MierukaTests.swift */; };
 		B1CC6E982ADF9B9D0033D2DD /* MierukaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC6E972ADF9B9D0033D2DD /* MierukaUITests.swift */; };
 		B1CC6E9A2ADF9B9D0033D2DD /* MierukaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CC6E992ADF9B9D0033D2DD /* MierukaUITestsLaunchTests.swift */; };
-		B1E028652ACA8BC700CD458E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E028642ACA8BC700CD458E /* HTTPClient.swift */; };
+		B1F8EEC12AFB14DC00E86C72 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F8EEC02AFB14DC00E86C72 /* HTTP.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,7 @@
 		B1CC6E952ADF9B9D0033D2DD /* MierukaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MierukaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CC6E972ADF9B9D0033D2DD /* MierukaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaUITests.swift; sourceTree = "<group>"; };
 		B1CC6E992ADF9B9D0033D2DD /* MierukaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MierukaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B1E028642ACA8BC700CD458E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		B1F8EEC02AFB14DC00E86C72 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,9 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				B1996D012ACD4CB00022DF07 /* Json.swift */,
-				B1E028642ACA8BC700CD458E /* HTTPClient.swift */,
 				B1B5F7B52AE9020D009D800F /* Header.swift */,
 				B1A685812AF21E3B006C1104 /* Switch.swift */,
+				B1F8EEC02AFB14DC00E86C72 /* HTTP.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -329,12 +329,12 @@
 				B10B32C32A9337B300D27C36 /* ListController.swift in Sources */,
 				B1A685822AF21E3B006C1104 /* Switch.swift in Sources */,
 				197F9D182A986694004FFB03 /* TodoTask.swift in Sources */,
-				B1E028652ACA8BC700CD458E /* HTTPClient.swift in Sources */,
 				B115D7782A95F7B40026731B /* Firstpage.swift in Sources */,
 				B157ACA02A9F0CBE00F4CEFC /* TodoListDelete.swift in Sources */,
 				197F9D1D2A9867FF004FFB03 /* TodoList.swift in Sources */,
 				B1996D022ACD4CB00022DF07 /* Json.swift in Sources */,
 				197F9D1B2A9867EA004FFB03 /* TodoListView.swift in Sources */,
+				B1F8EEC12AFB14DC00E86C72 /* HTTP.swift in Sources */,
 				197F9D1F2A9868CC004FFB03 /* TodoTaskInputView.swift in Sources */,
 				B1B5F7B62AE9020D009D800F /* Header.swift in Sources */,
 				B1C322602A8A1720004FFE37 /* ContentView.swift in Sources */,

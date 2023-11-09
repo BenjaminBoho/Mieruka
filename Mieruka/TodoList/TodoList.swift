@@ -37,9 +37,7 @@ class TodoList: Identifiable, Equatable, ObservableObject, Encodable {
         let newTask = TodoTask(id: UUID().uuidString, tasks: task, completed: false, listId: self.id)
         tasks.append(newTask)
         
-        let taskHeader = TodoTaskHeader(taskId: newTask.id, tasks: newTask.tasks, completed: newTask.completed, listId: newTask.listId )
-        
-        API().POSTTodoTask(todoTask: taskHeader) { result in
+        POSTTask(task: newTask) { result in
             switch result {
             case .success:
                 print("Task added successfully.")

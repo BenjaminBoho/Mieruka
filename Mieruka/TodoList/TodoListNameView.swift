@@ -26,12 +26,12 @@ struct TodoListNameView: View {
         } else {
             Text(todoList.name)
                 .font(.headline)
+            .onTapGesture{
+                listIsEditing.toggle()
+            }
             TodoListDelete {
                 deleteTodoList(todoList){
                 }
-            }
-            .onTapGesture{
-                listIsEditing.toggle()
             }
         }
     }

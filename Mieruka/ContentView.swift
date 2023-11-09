@@ -24,7 +24,16 @@ struct ContentView: View {
         NavigationView {
             contentView
                 .onAppear {
-                    viewModel.fetchTodoList()
+                    fetchTodoList { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let todoLists):
+                                viewModel.todoLists = todoLists
+                            case .failure(let error):
+                                print("Failed to fetch todo lists: \(error.localizedDescription)")
+                            }
+                        }
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

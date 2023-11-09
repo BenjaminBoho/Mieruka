@@ -21,7 +21,7 @@
             <Locations>
                <Location
                   uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - cefdbba54c24bb4a"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mieruka.deleteTodoList(Mieruka.TodoList) -&gt; ()"
@@ -36,7 +36,7 @@
                </Location>
                <Location
                   uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - cefdbba54c24bb4a"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mieruka.deleteTodoList(Mieruka.TodoList) -&gt; ()"
@@ -51,7 +51,7 @@
                </Location>
                <Location
                   uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - 4014e562068089c9"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mieruka.deleteTodoList(_: Mieruka.TodoList, completion: () -&gt; ()) -&gt; ()"
@@ -66,7 +66,7 @@
                </Location>
                <Location
                   uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - 4014e562068089c9"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Mieruka.deleteTodoList(_: Mieruka.TodoList, completion: () -&gt; ()) -&gt; ()"
@@ -79,7 +79,134 @@
                   endingLineNumber = "33"
                   offsetFromSymbolStart = "56">
                </Location>
+               <Location
+                  uuid = "A9057B11-387B-4F0D-90E4-00C47E30EC62 - 4014e562068089c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.deleteTodoList(_: Mieruka.TodoList, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "64">
+               </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E03EF849-C5B1-43D6-AEBB-7F43ECF8A87F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/HTTPClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "POSTTodoTask(todoTask:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34630786-E85D-40CE-8BB9-2E270D9825C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/Switch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "POSTList(todoList:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "34630786-E85D-40CE-8BB9-2E270D9825C5 - bb96a3bf20e13495"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.POSTList(name: Swift.String, completion: (Swift.Result&lt;Mieruka.TodoList, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "34630786-E85D-40CE-8BB9-2E270D9825C5 - e8ca36bd320ec297"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mieruka.POSTList(todoList: Mieruka.TodoList, completion: (Swift.Result&lt;Mieruka.TodoListHeader, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Mieruka"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rei/Mieruka/API/Switch.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66F5FF77-6943-4770-8964-9CC956ADFB7A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/Switch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "POSTTask(task:completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AAFB0A89-B460-4D13-9C94-4A570A6A15E7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/Switch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "fetchTodoList(completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8229A1B-76B5-4517-BE5D-898E55B773EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API/Switch.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "fetchTodoTasks(forList:completion:)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
